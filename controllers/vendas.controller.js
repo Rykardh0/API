@@ -1,13 +1,18 @@
-module.exports = () => {
-    const dataDB = require('../data/database.json');
+const {uuid} = require("uuidv4");
+
+module.exports = app => {
+    const db = app.data.database;
     const controller = {};
 
-    controller.listaVendas = (req, res) => res.status(200).json(dataDB);
+    const {
+        customerWallets: customerWalletsMock,
+    } = db;
 
-    return controller;
+    controller.listaVendas = (req, res) => {
+        return res.status(200).json(db.customerWallets)};
 
-    controller.salvarVendas = (req, res) =>{
-        dataDB.customerWallets.data.push({
+    controller.salvarVendas = (req, res) => {
+        db.customerWallets.data.push({
             id: uuid,
             parentId: uuid,
             name: req.body.name,
@@ -20,4 +25,7 @@ module.exports = () => {
         });
         res.status(201).json(db);
     }
+
+    return controller;
+
 }

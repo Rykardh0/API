@@ -1,7 +1,10 @@
 
 
 module.exports = app => {
-    const controller = require('../controllers/vendas.controller')();
+    const controller = app.controllers.vendas;
 
-    app.route('/api/v1/vendas').get(controller.listaVendas);
+    app.route('/api/v1/vendas')
+        .get(controller.listaVendas)
+        .post(controller.salvarVendas)
+        .delete(controller.deletaVendas);
 }
