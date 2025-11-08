@@ -5,6 +5,6 @@ module.exports = app => {
 
     app.route('/api/v1/vendas')
         .get(controller.listaVendas)
-        .post(controller.salvarVendas)
-        .delete(controller.deletaVendas);
+        .post(controller.salvarVendas);
+        //.delete(controller.deletaVendas);
 }
